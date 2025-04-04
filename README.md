@@ -55,19 +55,27 @@
 - CSS3 (Flexbox, Grid, Animations, Transitions, Variables)
 - Minimal JavaScript (only in 3 projects)
 
-🤝 Contributing
-While this is primarily a personal challenge, suggestions and improvements are welcome! Please open an issue or pull request for any substantial changes.
 
-📄 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+## 🚀 Getting Started
 
-🙏 Acknowledgments
-Inspired by various online CSS challenges
+1. Clone the repository:
+   ```bash
+   git@github.com:yahya-mohamed-1/CSS-30-Days-Challenge.git
+2. Navigate to any day's folder and open index.html in your browser
 
-Thanks to CSS-Tricks and MDN for documentation
+## 🤝 Contributing
+- While this is primarily a personal challenge, suggestions and improvements are welcome! Please open an issue or pull request for any substantial changes.
 
-Unsplash for placeholder images
+## 📄 License
+- This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🙏 Acknowledgments
+- Inspired by various online CSS challenges
+- Thanks to CSS-Tricks and MDN for documentation
+- Unsplash for placeholder images
 
 Created with ❤️ by Yahya Mohamed
+
 Show your support by ⭐️ starring this repository!
+
 Thanks a lot. I hope you enjoy this repo!
