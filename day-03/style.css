@@ -1,0 +1,91 @@
+/* Day 3 - Neon Glow Text Effect */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0f0f0f;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    text-align: center;
+}
+
+.neon {
+    color: #fff;
+    text-shadow:
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px #fff,
+        0 0 40px #0ff,
+        0 0 80px #0ff,
+        0 0 90px #0ff,
+        0 0 100px #0ff,
+        0 0 150px #0ff;
+    font-size: 6rem;
+    animation: flicker 1.5s infinite alternate;
+}
+
+.flux {
+    color: #fff;
+    text-shadow:
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px #fff,
+        0 0 40px #f0f,
+        0 0 80px #f0f,
+        0 0 90px #f0f,
+        0 0 100px #f0f,
+        0 0 150px #f0f;
+    font-size: 6rem;
+    animation: pulsate 0.11s ease-in-out infinite alternate;
+}
+
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        text-shadow:
+            0 0 5px #fff,
+            0 0 10px #fff,
+            0 0 20px #fff,
+            0 0 40px #0ff,
+            0 0 80px #0ff,
+            0 0 90px #0ff,
+            0 0 100px #0ff,
+            0 0 150px #0ff;
+    }
+    20%, 24%, 55% {        
+        text-shadow: none;
+    }
+}
+
+@keyframes pulsate {
+    100% {
+        text-shadow:
+            0 0 5px #fff,
+            0 0 10px #fff,
+            0 0 20px #fff,
+            0 0 40px #f0f,
+            0 0 80px #f0f,
+            0 0 90px #f0f,
+            0 0 100px #f0f,
+            0 0 150px #f0f;
+    }
+    0% {
+        text-shadow:
+            0 0 2px #fff,
+            0 0 5px #fff,
+            0 0 10px #fff,
+            0 0 20px #f0f,
+            0 0 40px #f0f,
+            0 0 50px #f0f,
+            0 0 60px #f0f,
+            0 0 80px #f0f;
+    }
+}
