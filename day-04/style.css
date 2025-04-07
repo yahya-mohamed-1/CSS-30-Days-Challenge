@@ -1,0 +1,86 @@
+/* Day 4 - Parallax Scrolling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden;
+}
+
+.parallax {
+    perspective: 1px;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.parallax-group {
+    position: relative;
+    height: 100vh;
+    transform-style: preserve-3d;
+}
+
+.layer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.layer-1 {
+    transform: translateZ(-3px) scale(4);
+    background: #ff9a9e;
+}
+
+.layer-2 {
+    transform: translateZ(-2px) scale(3);
+    background: #fad0c4;
+}
+
+.layer-3 {
+    transform: translateZ(-1px) scale(2);
+    background: #fbc2eb;
+}
+
+.layer-4 {
+    transform: translateZ(0);
+    background: #a6c1ee;
+}
+
+.layer-5 {
+    transform: translateZ(1px) scale(0.8);
+    background: #f5f7fa;
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 10;
+}
+
+.content h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.regular-content {
+    padding: 50px;
+    background: #f5f7fa;
+    height: 100vh;
+    text-align: center;
+}
+
+.regular-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
