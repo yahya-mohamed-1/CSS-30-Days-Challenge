@@ -1,0 +1,162 @@
+/* Day 5 - CSS Loading Animations */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f5f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    text-align: center;
+    padding: 2rem;
+}
+
+h1 {
+    margin-bottom: 3rem;
+    color: #333;
+}
+
+.loaders {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Loader 1 - Dot Pulse */
+.loader-1 {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    height: 100px;
+}
+
+.loader-1 .dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ff6b6b;
+    animation: pulse 1.4s infinite ease-in-out;
+}
+
+.loader-1 .dot:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.loader-1 .dot:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+@keyframes pulse {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+}
+
+/* Loader 2 - Spinner */
+.loader-2 {
+    width: 80px;
+    height: 80px;
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #48dbfb;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Loader 3 - Bouncing Bars */
+.loader-3 {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.loader-3::before,
+.loader-3::after {
+    content: '';
+    display: block;
+    width: 15px;
+    background: #1dd1a1;
+    animation: bounce 1s infinite ease-in-out;
+}
+
+.loader-3::before {
+    height: 60px;
+    animation-delay: -0.32s;
+}
+
+.loader-3::after {
+    height: 30px;
+    animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+    0%, 100% { height: 30px; }
+    50% { height: 60px; }
+}
+
+/* Loader 4 - Circle Wave */
+.loader-4 {
+    width: 80px;
+    height: 80px;
+    position: relative;
+}
+
+.loader-4 div {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #5f27cd;
+    animation: wave 1.2s infinite ease-in-out;
+}
+
+.loader-4 div:nth-child(1) {
+    left: 8px;
+    animation-delay: -0.24s;
+}
+.loader-4 div:nth-child(2) {
+    left: 32px;
+    animation-delay: -0.12s;
+}
+.loader-4 div:nth-child(3) {
+    left: 56px;
+    animation-delay: 0;
+}
+
+@keyframes wave {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+}
+
+/* Loader 5 - Ripple */
+.loader-5 {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 4px solid transparent;
+    border-top-color: #ff9f43;
+    border-bottom-color: #ff9f43;
+    animation: ripple 1s linear infinite;
+}
+
+@keyframes ripple {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.2); }
+    100% { transform: rotate(360deg) scale(1); }
+}
