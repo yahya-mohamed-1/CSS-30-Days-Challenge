@@ -45,7 +45,7 @@ h1 {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #ff6b6b;
+    background: #bf0000;
     animation: pulse 1.4s infinite ease-in-out;
 }
 
@@ -67,7 +67,7 @@ h1 {
     width: 80px;
     height: 80px;
     border: 8px solid #f3f3f3;
-    border-top: 8px solid #48dbfb;
+    border-top: 8px solid #00a413;
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }
@@ -91,7 +91,7 @@ h1 {
     content: '';
     display: block;
     width: 15px;
-    background: #1dd1a1;
+    background: #0018cf;
     animation: bounce 1s infinite ease-in-out;
 }
 
@@ -110,42 +110,8 @@ h1 {
     50% { height: 60px; }
 }
 
-/* Loader 4 - Circle Wave */
+/* Loader 4 - Ripple */
 .loader-4 {
-    width: 80px;
-    height: 80px;
-    position: relative;
-}
-
-.loader-4 div {
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: #5f27cd;
-    animation: wave 1.2s infinite ease-in-out;
-}
-
-.loader-4 div:nth-child(1) {
-    left: 8px;
-    animation-delay: -0.24s;
-}
-.loader-4 div:nth-child(2) {
-    left: 32px;
-    animation-delay: -0.12s;
-}
-.loader-4 div:nth-child(3) {
-    left: 56px;
-    animation-delay: 0;
-}
-
-@keyframes wave {
-    0%, 80%, 100% { transform: scale(0); }
-    40% { transform: scale(1); }
-}
-
-/* Loader 5 - Ripple */
-.loader-5 {
     width: 80px;
     height: 80px;
     border-radius: 50%;
