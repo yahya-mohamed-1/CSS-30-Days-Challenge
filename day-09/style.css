@@ -1,0 +1,117 @@
+/* Day 9 - CSS Drawing (Animated Butterfly) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.butterfly {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    animation: float 4s ease-in-out infinite;
+}
+
+.body {
+    position: absolute;
+    width: 20px;
+    height: 100px;
+    background: #333;
+    border-radius: 10px;
+    top: 50px;
+    left: 90px;
+    z-index: 2;
+}
+
+.left-wing, .right-wing {
+    position: absolute;
+    width: 80px;
+    height: 100px;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb);
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    z-index: 1;
+    animation: flap 2s ease-in-out infinite;
+}
+
+.left-wing {
+    left: 10px;
+    transform-origin: right center;
+}
+
+.right-wing {
+    right: 10px;
+    transform-origin: left center;
+    background: linear-gradient(45deg, #a6c1ee, #fbc2eb, #ff9a9e);
+}
+
+.left-wing-bottom, .right-wing-bottom {
+    position: absolute;
+    width: 60px;
+    height: 80px;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    background: rgba(255,255,255,0.6);
+    z-index: 0;
+}
+
+.left-wing-bottom {
+    left: 20px;
+    top: 70px;
+    transform-origin: right center;
+    animation: flap 2s ease-in-out infinite reverse;
+}
+
+.right-wing-bottom {
+    right: 20px;
+    top: 70px;
+    transform-origin: left center;
+    animation: flap 2s ease-in-out infinite reverse;
+}
+
+.antenna {
+    position: absolute;
+    width: 2px;
+    height: 40px;
+    background: #333;
+    top: 50px;
+    transform-origin: bottom center;
+}
+
+.antenna.left {
+    left: 90px;
+    transform: rotate(-30deg);
+}
+
+.antenna.right {
+    right: 90px;
+    transform: rotate(30deg);
+}
+
+.antenna::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #ff9a9e;
+    border-radius: 50%;
+    top: 0;
+    left: -3px;
+}
+
+@keyframes flap {
+    0%, 100% { transform: rotateY(0deg); }
+    50% { transform: rotateY(60deg); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
