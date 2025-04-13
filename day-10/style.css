@@ -1,0 +1,63 @@
+/* Day 10 - Text Clipping with Video Background */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.video-text {
+    font-size: 20vw;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: white;
+    background: rgba(0,0,0,0.5);
+    padding: 0 30px;
+    mix-blend-mode: multiply;
+    
+    /* Clip text to show video */
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    position: relative;
+}
+
+.video-text::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(255,255,255,0.5) 50%,
+        transparent 100%
+    );
+    mix-blend-mode: overlay;
+    pointer-events: none;
+}
