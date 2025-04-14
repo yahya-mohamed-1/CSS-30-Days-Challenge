@@ -1,0 +1,239 @@
+/* Day 11 - Animated Checkbox Collection */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f5f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    text-align: center;
+    padding: 2rem;
+    max-width: 800px;
+}
+
+h1 {
+    margin-bottom: 2rem;
+    color: #333;
+    font-size: 2.5rem;
+}
+
+.checkbox-group {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+h2 {
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+/* Switch Style */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #4CAF50;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Flip Style */
+.flip {
+    position: relative;
+    display: inline-block;
+    width: 90px;
+    height: 40px;
+}
+
+.flip input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.flip-btn {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ff6b6b;
+    transition: .4s;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 40px;
+    color: white;
+    font-weight: bold;
+}
+
+.flip-btn:after {
+    content: attr(data-label-off);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: .4s;
+    opacity: 1;
+}
+
+input:checked + .flip-btn {
+    background-color: #48dbfb;
+}
+
+input:checked + .flip-btn:after {
+    content: attr(data-label-on);
+    opacity: 1;
+}
+
+/* Expand Style */
+.expand {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+}
+
+.expand input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.expand-btn {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ff9f43;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+.expand-btn:before {
+    position: absolute;
+    content: "✓";
+    color: white;
+    font-size: 1.5rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: .4s;
+}
+
+input:checked + .expand-btn {
+    transform: scale(1.5);
+    background-color: #1dd1a1;
+}
+
+input:checked + .expand-btn:before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* 3D Toggle Style */
+.toggle-3d {
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 40px;
+    perspective: 1000px;
+}
+
+.toggle-3d input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-3d-btn {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #5f27cd;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    border-radius: 5px;
+}
+
+.toggle-3d-btn:before {
+    position: absolute;
+    content: "OFF";
+    color: white;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateY(0deg);
+    backface-visibility: hidden;
+    transition: .6s;
+}
+
+.toggle-3d-btn:after {
+    position: absolute;
+    content: "ON";
+    color: white;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateY(180deg);
+    backface-visibility: hidden;
+    transition: .6s;
+}
+
+input:checked + .toggle-3d-btn {
+    transform: rotateY(180deg);
+    background-color: #ff9ff3;
+}
