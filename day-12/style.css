@@ -1,0 +1,61 @@
+/* Day 12 - Infinite Zoom Background */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+}
+
+.zoom-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.zoom-bg {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    /* Add background image */
+    background: url('https://www.flagcolorcodes.com/data/flag-of-kenya.png');
+    background-size: 100px 100px, 100px 100px, 50px 50px, 50px 50px;
+    background-position: 0 0, 50px 50px, 0 -2px, -2px 0;
+    animation: zoom 20s linear infinite;
+}
+
+@keyframes zoom {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.5);
+    }
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+    z-index: 10;
+}
+
+h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1.5rem;
+    opacity: 0.9;
+}
