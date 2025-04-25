@@ -1,5 +1,4 @@
-/* Day 30 - Interactive CSS-only Game */
-/* Base Styles */
+/* Day 30 - Interactive Game */
 * {
     margin: 0;
     padding: 0;
@@ -32,7 +31,7 @@ body {
     font-size: 1.2rem;
     cursor: pointer;
     z-index: 10;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
 }
 
@@ -51,7 +50,8 @@ body {
     min-width: 180px;
 }
 
-.start-btn:hover, .restart-btn:hover {
+.start-btn:hover,
+.restart-btn:hover {
     background: #45a049;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -65,15 +65,15 @@ body {
     background: linear-gradient(to bottom, #87CEEB, #E0F7FA);
     overflow: hidden;
     border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     display: none;
 }
 
-#start-game:checked ~ .game-container {
+#start-game:checked~.game-container {
     display: block;
 }
 
-#start-game:checked ~ .start-btn {
+#start-game:checked~.start-btn {
     display: none;
 }
 
@@ -95,13 +95,20 @@ body {
     z-index: 3;
 }
 
-#jump:checked ~ .game-scene .player {
+#jump:checked~.game-scene .player {
     animation: jump 0.8s cubic-bezier(0.5, 0, 0.5, 1) forwards;
 }
 
 @keyframes jump {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-120px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-120px);
+    }
 }
 
 .obstacle {
@@ -114,13 +121,18 @@ body {
     z-index: 2;
 }
 
-#start-game:checked ~ .game-container .obstacle {
+#start-game:checked~.game-container .obstacle {
     animation: moveObstacle 2s linear infinite;
 }
 
 @keyframes moveObstacle {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-630px); }
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-630px);
+    }
 }
 
 .ground {
@@ -142,14 +154,24 @@ body {
 }
 
 /* Collision Detection */
-#start-game:checked ~ .game-container .obstacle:checked ~ .player:not() {
+#start-game:checked~.game-container .obstacle:checked~.player:not() {
     animation: shake 0.5s linear;
 }
 
 @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-10px); }
-    75% { transform: translateX(10px); }
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-10px);
+    }
+
+    75% {
+        transform: translateX(10px);
+    }
 }
 
 /* Game Over State */
@@ -192,13 +214,18 @@ body {
     color: #4CAF50;
 }
 
-.final-score{
+.final-score {
     margin-bottom: 20px;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 /* Responsive Design */
@@ -207,7 +234,7 @@ body {
         width: 100vw;
         height: 60vh;
     }
-    
+
     .jump-btn {
         width: 100%;
         bottom: 0;
