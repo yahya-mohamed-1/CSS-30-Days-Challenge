@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS-Only Jump Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <input type="checkbox" id="start-game" class="hidden-toggle">
+    <label for="start-game" class="start-btn">Start Game</label>
+    
+    <div class="game-container">
+        <input type="checkbox" id="jump" class="hidden-toggle">
+        <div class="game-scene">
+            <div class="player"></div>
+            <div class="obstacle"></div>
+            <div class="ground"></div>
+            <div class="score">Score: <span id="score-display">0</span></div>
+        </div>
+    </div>
+    
+    <div class="game-over">
+        <h2>Game Over!</h2>
+        <p>Your final score:</p>
+        <div class="final-score"><span id="final-score">0</span></div>
+        <label for="start-game" class="restart-btn">Play Again</label>
+    </div>
+
+    <script>
+    // Game state management
+    let score = 0;
+    let scoreInterval;
+    const scoreDisplay = document.getElementById('score-display');
+    const finalScoreDisplay = document.getElementById('final-score');
+    const startGameCheckbox = document.getElementById('start-game');
+    const obstacle = document.querySelector('.obstacle');
+    const gameOverScreen = document.querySelector('.game-over');
+
+    // Start game handler
+    startGameCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            startGame();
+        }
+    });
+
+    function startGame() {
+        score = 0;
+        scoreDisplay.textContent = '0';
+        gameOverScreen.style.display = 'none';
+        document.querySelector('.start-btn').style.display = '';
+        scoreInterval = setInterval(() => {
+            score++;
+            scoreDisplay.textContent = score;
+        }, 100);
+    }
+
+    // Game over detection
+    function checkCollision() {
+        const playerRect = document.querySelector('.player').getBoundingClientRect();
+        const obstacleRect = obstacle.getBoundingClientRect();
+        
+        if (!startGameCheckbox.checked) return false;
+        
+        return !(
+            playerRect.right < obstacleRect.left || 
+            playerRect.left > obstacleRect.right ||
+            playerRect.bottom < obstacleRect.top ||
+            playerRect.top > obstacleRect.bottom
+        );
+    }
+
+    // Game loop
+    function gameLoop() {
+        if (checkCollision()) {
+            endGame();
+        }
+        requestAnimationFrame(gameLoop);
+    }
+
+    function endGame() {
+        clearInterval(scoreInterval);
+        finalScoreDisplay.textContent = score;
+        gameOverScreen.style.display = 'block';
+        startGameCheckbox.checked = false;
+        // Hide start button label on crashing
+        document.querySelector('.start-btn').style.display = 'none';
+    }
+
+    // Keyboard controls
+    document.addEventListener('keydown', (e) => {
+        if (e.code === 'Space') {
+            e.preventDefault();
+            const jumpCheckbox = document.getElementById('jump');
+            if (!jumpCheckbox.checked && startGameCheckbox.checked) {
+                jumpCheckbox.checked = true;
+                setTimeout(() => {
+                    jumpCheckbox.checked = false;
+                }, 800);
+            }
+        }
+    });
+
+    // Start the game loop
+    gameLoop();
+    </script>
+</body>
+</html>

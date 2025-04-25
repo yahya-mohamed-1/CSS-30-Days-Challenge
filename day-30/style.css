@@ -1,0 +1,217 @@
+/* Day 30 - Interactive CSS-only Game */
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #222;
+    overflow: hidden;
+}
+
+.hidden-toggle {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Game Controls */
+.start-btn {
+    position: absolute;
+    padding: 15px 30px;
+    background: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.restart-btn {
+    margin-top: 20px;
+    padding: 12px 30px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: auto;
+    min-width: 180px;
+}
+
+.start-btn:hover, .restart-btn:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Game Container */
+.game-container {
+    position: relative;
+    width: 600px;
+    height: 300px;
+    background: linear-gradient(to bottom, #87CEEB, #E0F7FA);
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    display: none;
+}
+
+#start-game:checked ~ .game-container {
+    display: block;
+}
+
+#start-game:checked ~ .start-btn {
+    display: none;
+}
+
+/* Game Elements */
+.game-scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.player {
+    position: absolute;
+    bottom: 0;
+    left: 50px;
+    width: 40px;
+    height: 60px;
+    background: #FF5722;
+    border-radius: 50% 50% 0 0;
+    z-index: 3;
+}
+
+#jump:checked ~ .game-scene .player {
+    animation: jump 0.8s cubic-bezier(0.5, 0, 0.5, 1) forwards;
+}
+
+@keyframes jump {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-120px); }
+}
+
+.obstacle {
+    position: absolute;
+    bottom: 0;
+    right: -30px;
+    width: 30px;
+    height: 50px;
+    background: #795548;
+    z-index: 2;
+}
+
+#start-game:checked ~ .game-container .obstacle {
+    animation: moveObstacle 2s linear infinite;
+}
+
+@keyframes moveObstacle {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-630px); }
+}
+
+.ground {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 20px;
+    background: #8BC34A;
+    z-index: 1;
+}
+
+.score {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #333;
+    font-size: 1.2rem;
+    z-index: 4;
+}
+
+/* Collision Detection */
+#start-game:checked ~ .game-container .obstacle:checked ~ .player:not() {
+    animation: shake 0.5s linear;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/* Game Over State */
+.game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 30px 40px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 20;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.game-over h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #ff5722;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.game-over p {
+    font-size: 1.3rem;
+    line-height: 1.5;
+}
+
+.game-over .final-score {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.final-score{
+    margin-bottom: 20px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .game-container {
+        width: 100vw;
+        height: 60vh;
+    }
+    
+    .jump-btn {
+        width: 100%;
+        bottom: 0;
+        right: 0;
+        border-radius: 0;
+    }
+}

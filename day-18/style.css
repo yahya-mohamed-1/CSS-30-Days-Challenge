@@ -1,0 +1,140 @@
+/* Day 18 - Floating Island with CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+}
+
+.scene {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.sky {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #1e5799 0%, #2989d8 50%, #7db9e8 100%);
+}
+
+.island {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: float 6s ease-in-out infinite;
+}
+
+.ground {
+    width: 300px;
+    height: 150px;
+    background: #5d4037;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    position: relative;
+    z-index: 2;
+    box-shadow: inset -10px -10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.tree {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 100px;
+    background: #4e342e;
+    border-radius: 10px;
+    z-index: 3;
+}
+
+.tree::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -30px;
+    width: 100px;
+    height: 100px;
+    background: #2e7d32;
+    border-radius: 50%;
+    box-shadow: 
+        0 -10px 0 #1b5e20,
+        20px -10px 0 #2e7d32,
+        -20px -10px 0 #388e3c;
+}
+
+.shadow {
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    filter: blur(10px);
+    z-index: 1;
+    animation: shadow 6s ease-in-out infinite;
+}
+
+.clouds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.cloud {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    filter: blur(5px);
+    opacity: 0.8;
+    animation: moveCloud linear infinite;
+}
+
+.cloud:nth-child(1) {
+    width: 100px;
+    height: 60px;
+    top: 20%;
+    left: 10%;
+    animation-duration: 30s;
+}
+
+.cloud:nth-child(2) {
+    width: 150px;
+    height: 90px;
+    top: 30%;
+    left: 50%;
+    animation-duration: 40s;
+}
+
+.cloud:nth-child(3) {
+    width: 80px;
+    height: 50px;
+    top: 15%;
+    left: 80%;
+    animation-duration: 25s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(-50%, -50%) translateY(0px); }
+    50% { transform: translate(-50%, -50%) translateY(-20px); }
+}
+
+@keyframes shadow {
+    0%, 100% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(0.8); }
+}
+
+@keyframes moveCloud {
+    0% { transform: translateX(-100px); }
+    100% { transform: translateX(calc(100vw + 100px)); }
+}

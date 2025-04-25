@@ -1,0 +1,98 @@
+/* Day 28 - CSS-only Accordion */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.accordion {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.accordion-item {
+    border-bottom: 1px solid #eee;
+}
+
+.accordion-item:last-child {
+    border-bottom: none;
+}
+
+.accordion-header {
+    display: block;
+    padding: 20px;
+    background: linear-gradient(to right, #a18cd1, #fbc2eb);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.accordion-header:hover {
+    background: linear-gradient(to right, #8e7cc3, #e6a8d7);
+}
+
+.accordion-header::after {
+    content: '+';
+    position: absolute;
+    right: 20px;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.3s ease;
+}
+
+.accordion-content p {
+    padding: 0 20px;
+    margin: 20px 0;
+    color: #555;
+    line-height: 1.6;
+}
+
+input[type="checkbox"]:checked + .accordion-header {
+    background: linear-gradient(to right, #8e7cc3, #e6a8d7);
+}
+
+input[type="checkbox"]:checked + .accordion-header::after {
+    transform: rotate(45deg);
+}
+
+input[type="checkbox"]:checked ~ .accordion-content {
+    max-height: 300px;
+    padding: 0 0 20px;
+}
+
+/* Animation for content */
+.accordion-content p {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease 0.2s, transform 0.3s ease 0.2s;
+}
+
+input[type="checkbox"]:checked ~ .accordion-content p {
+    opacity: 1;
+    transform: translateY(0);
+}

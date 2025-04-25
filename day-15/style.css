@@ -1,0 +1,108 @@
+/* Day 15 - Liquid Bubble Buttons */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.liquid-btn {
+    position: relative;
+    padding: 20px 50px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    border-radius: 50px;
+    backdrop-filter: blur(5px);
+    cursor: pointer;
+    overflow: hidden;
+    transition: 0.5s;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.liquid-btn:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    color: #fff;
+}
+
+.liquid-btn .liquid {
+    position: absolute;
+    top: -60px;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: #4973ff;
+    transition: 0.5s;
+    z-index: -1;
+}
+
+.liquid-btn .liquid::before,
+.liquid-btn .liquid::after {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+}
+
+.liquid-btn .liquid::before {
+    border-radius: 45%;
+    background: rgba(20,20,20,1);
+    animation: animate 5s linear infinite;
+}
+
+.liquid-btn .liquid::after {
+    border-radius: 40%;
+    background: rgba(20,20,20,0.5);
+    animation: animate 10s linear infinite;
+}
+
+.liquid-btn:hover .liquid {
+    top: -120px;
+}
+
+@keyframes animate {
+    0% {
+        transform: translate(-50%, -75%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -75%) rotate(360deg);
+    }
+}
+
+/* Different colors for each button */
+.liquid-btn:nth-child(1) .liquid {
+    background: #ff9a9e;
+}
+
+.liquid-btn:nth-child(2) .liquid {
+    background: #a18cd1;
+}
+
+.liquid-btn:nth-child(3) .liquid {
+    background: #fbc2eb;
+}
+
+.btn-text {
+    position: relative;
+    z-index: 1;
+}

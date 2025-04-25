@@ -1,0 +1,103 @@
+/* Day 17 - CSS-only Dark/Light Mode Toggle */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background 0.5s ease;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f5f7fa;
+    color: #333;
+}
+
+#toggle {
+    display: none;
+}
+
+.toggle-label {
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    background: #ddd;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-bottom: 50px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.ball {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.5s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.sun, .moon {
+    position: absolute;
+    font-size: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.sun {
+    left: 10px;
+    opacity: 1;
+}
+
+.moon {
+    right: 10px;
+    opacity: 0;
+}
+
+#toggle:checked + .toggle-label {
+    background: #333;
+}
+
+#toggle:checked + .toggle-label .ball {
+    transform: translateX(50px);
+    background: #f5f7fa;
+}
+
+#toggle:checked + .toggle-label .sun {
+    opacity: 0;
+}
+
+#toggle:checked + .toggle-label .moon {
+    opacity: 1;
+}
+
+/* Dark mode styles */
+#toggle:checked ~ .content {
+    background: #222;
+    color: #f5f7fa;
+}
+
+.content {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}

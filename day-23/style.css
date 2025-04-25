@@ -1,0 +1,40 @@
+/* Day 23 - Animated Text Typing Effect */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #1a1a1a;
+    font-family: 'Courier New', monospace;
+}
+
+.container {
+    text-align: center;
+}
+
+.typing-text {
+    position: relative;
+    color: #00ff00;
+    font-size: 3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid #00ff00;
+    animation: typing 4s steps(30) infinite, blink 0.5s step-end infinite;
+}
+
+@keyframes typing {
+    0% { width: 0; }
+    50% { width: 100%; }
+    100% { width: 0; }
+}
+
+@keyframes blink {
+    from, to { border-color: transparent; }
+    50% { border-color: #00ff00; }
+}
