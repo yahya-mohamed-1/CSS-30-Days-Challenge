@@ -44,7 +44,7 @@
 | 27 | [📈 Progress Bar](day-27/) | `gradient` `animation` | ⭐⭐ |
 | 28 | [📌 CSS Accordion](day-28/) | `checkbox hack` | ⭐⭐⭐ |
 | 29 | [∞ Scrolling BG](day-29/) | `background-position` | ⭐⭐ |
-| 30 | [🎮 CSS Game](day-30/) | `checkbox hack` | ⭐⭐⭐⭐⭐ |
+| 30 | [🎮 Jumping Game](day-30/) | `checkbox hack` | ⭐⭐⭐⭐⭐ |
 
 **Difficulty Legend**:  
 ⭐ Basic | ⭐⭐ Intermediate | ⭐⭐⭐ Advanced | ⭐⭐⭐⭐ Expert | ⭐⭐⭐⭐⭐ Extreme
